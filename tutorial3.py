@@ -12,7 +12,7 @@ bg = Sprite(bg_asset, (0,0))
 
 
 # A ball! This is already in the ggame-tutorials repository
-ball_asset = ImageAsset("images/orb-150545_640.png")
+ball_asset = ImageAsset("beach-ball-575425_640.png")
 ball = Sprite(ball_asset, (0, 0))
 # Original image is too big. Scale it to 1/10 its original size
 ball.scale = .1
@@ -59,11 +59,22 @@ def mouseClick(event):
 def zKey(event):
     ball.scale = .2
 
+def xKey(event):
+    ball.scale = .1    
+
+def mKey(event):
+    ball.dir = 2.5
+    
+def nKey(event):
+    ball.dir = 5
+
 myapp = App(SCREEN_WIDTH, SCREEN_HEIGHT)
 # Set up event handlers for the app
 myapp.listenKeyEvent('keydown', 'space', spaceKey)
 myapp.listenKeyEvent('keydown', 'r', reverseKey)
 myapp.listenMouseEvent('click', mouseClick)
 myapp.listenKeyEvent('keydown', 'z', zKey)
-
+myapp.listenKeyEvent('keydown', 'x', xKey)
+myapp.listenKeyEvent('keydown', 'm', mKey)
+myapp.listenKeyEvent('keydown', 'n', nKey)
 myapp.run(step)
