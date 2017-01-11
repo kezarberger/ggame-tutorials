@@ -44,7 +44,7 @@ def step():
             ball.x -= ball.dir
             reverse(ball)
 
-def step():
+def sun():
     if sun.go:
         sun.x += sun.dir
         if sun.x + sun.width > SCREEN_WIDTH or sun.x < 0:
@@ -94,3 +94,4 @@ myapp.listenKeyEvent('keydown', 'x', xKey)
 myapp.listenKeyEvent('keydown', 'm', mKey)
 myapp.listenKeyEvent('keydown', 'n', nKey)
 myapp.run(step)
+myapp.run(sun)
