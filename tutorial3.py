@@ -1,8 +1,8 @@
 from ggame import App, RectangleAsset, ImageAsset, SoundAsset, Sprite, Sound
 from ggame import LineStyle, Color
 
-SCREEN_WIDTH = 640
-SCREEN_HEIGHT = 480
+SCREEN_WIDTH = 1000
+SCREEN_HEIGHT = 600
 
 green = Color(0x00ff00, 1)
 black = Color(0, 1)
@@ -15,10 +15,10 @@ bg = Sprite(bg_asset, (0,0))
 ball_asset = ImageAsset("images/orb-150545_640.png")
 ball = Sprite(ball_asset, (0, 0))
 # Original image is too big. Scale it to 1/10 its original size
-ball.scale = 0.1
+ball.scale = 1
 ball.y = 200
 # custom attributes
-ball.dir = 1
+ball.dir = 5
 ball.go = True
 
 
