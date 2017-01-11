@@ -1,7 +1,7 @@
 from ggame import App, RectangleAsset, ImageAsset, SoundAsset, Sprite, Sound
 from ggame import LineStyle, Color
 
-SCREEN_WIDTH = 1000
+SCREEN_WIDTH = 600
 SCREEN_HEIGHT = 600
 
 green = Color(0x00ff00, 1)
@@ -15,7 +15,7 @@ bg = Sprite(bg_asset, (0,0))
 ball_asset = ImageAsset("images/orb-150545_640.png")
 ball = Sprite(ball_asset, (0, 0))
 # Original image is too big. Scale it to 1/10 its original size
-ball.scale = 1
+ball.scale = .1
 ball.y = 200
 # custom attributes
 ball.dir = 5
@@ -55,11 +55,15 @@ def mouseClick(event):
     ball.x = event.x
     ball.y = event.y
     pew1.play()
+    
+def zKey(event):
+    ball.scale = .2
 
 myapp = App(SCREEN_WIDTH, SCREEN_HEIGHT)
 # Set up event handlers for the app
 myapp.listenKeyEvent('keydown', 'space', spaceKey)
 myapp.listenKeyEvent('keydown', 'r', reverseKey)
 myapp.listenMouseEvent('click', mouseClick)
+myapp.listenKeyEvent('keydown', 'z', zKey)
 
 myapp.run(step)
