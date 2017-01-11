@@ -12,7 +12,7 @@ bg = Sprite(bg_asset, (0,0))
 
 
 # A ball! This is already in the ggame-tutorials repository
-ball_asset = ImageAsset("beach-ball-575425_640.png")
+ball_asset = ImageAsset("images/beach-ball-575425_640.png")
 ball = Sprite(ball_asset, (0, 0))
 # Original image is too big. Scale it to 1/10 its original size
 ball.scale = .1
@@ -22,9 +22,18 @@ ball.dir = 5
 ball.go = True
 
 
+sun_asset = ImageAsset("images/sun.png")
+sun = Sprite(sun_asset, (0,0))
+sun.scale = 2
+sun.dir = -5
+sun.go = True
 
 def reverse(b):
     b.dir *= -1
+    pop.play()
+
+def sungod(s):
+    s.scale *= .5
     pop.play()
 
 # Set up function for handling screen refresh
@@ -34,7 +43,13 @@ def step():
         if ball.x + ball.width > SCREEN_WIDTH or ball.x < 0:
             ball.x -= ball.dir
             reverse(ball)
-            
+
+def step():
+    if sun.go:
+        sun.x += sun.dir
+        if sun.x + sun.width > SCREEN_WIDTH or sun.x < 0:
+            sun.x -= sun.dir
+            reverse(sun)
 # Sounds
 pew1_asset = SoundAsset("sounds/pew1.mp3")
 pew1 = Sound(pew1_asset)
@@ -67,6 +82,7 @@ def mKey(event):
     
 def nKey(event):
     ball.dir = 5
+
 
 myapp = App(SCREEN_WIDTH, SCREEN_HEIGHT)
 # Set up event handlers for the app
